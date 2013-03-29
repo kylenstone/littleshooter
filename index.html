@@ -43,16 +43,19 @@
 	 }
 	}
 
-	function drawShip() {
+  function moveShip() {
 	 if (rightKey) ship_x += 5;
 	 else if (leftKey) ship_x -= 5;
 	 if (upKey) ship_y -= 5;
-	 else if (downKey) ship_y += 5;
+	 else if (downKey) ship_y += 5;  
+  }
+
+	function drawShip() {
 	 if (ship_x <= 0) ship_x = 0;
 	 if ((ship_x + ship_w) >= width) ship_x = width - ship_w;
-	  if (ship_y <= 0) ship_y = 0;
+	 if (ship_y <= 0) ship_y = 0;
 	 if ((ship_y + ship_h) >= height) ship_y = height - ship_h;
-	  ctx.drawImage(ship, ship_x, ship_y);
+	 ctx.drawImage(ship, ship_x, ship_y);
 	}
 	
 	function drawLaser() {
@@ -118,9 +121,10 @@
 	  hitTest();
 	  moveEnemies();
 	  moveLaser();
+    moveShip();
 	  drawEnemies();
 	  drawShip();
-      drawLaser();
+    drawLaser();
 	}
 
 	function keyDown(e) {
